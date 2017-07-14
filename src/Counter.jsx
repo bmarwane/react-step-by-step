@@ -17,11 +17,25 @@ export default class Counter extends React.Component {
     render() {
         return (
             <div>
-                <h1>{ this.state.nb }</h1>
+                <NumberDisplay
+                    numberToDisplay={this.state.nb}
+                    textColor="red"
+                />
                 <button onClick={ ( ) => this.increment() }>
                     click me
                 </button>
             </div>
         )
     }
+}
+
+
+function NumberDisplay({ numberToDisplay, textColor}) {
+    const style = {
+        color: textColor,
+        fontSize: '60px'
+    }
+    return (
+        <h1 style={style}>{ numberToDisplay }</h1>
+    )
 }
