@@ -30,12 +30,12 @@ export default class Counter extends React.Component {
 }
 
 
-function NumberDisplay({ numberToDisplay, textColor}) {
+function NumberDisplay(props) {
     const style = {
-        color: textColor,
+        color: props.textColor,
         fontSize: '60px'
     }
     return (
-        <h1 style={style}>{ numberToDisplay }</h1>
+        <h1 style={style}>{ props.numberToDisplay }</h1>
     )
 }
