@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import Counter from './Counter'
+import MainRouter from './routes'
 
-render( <Counter />, document.getElementById('react-app'))
+render( <MainRouter />, document.getElementById('react-app'))
