@@ -4,7 +4,7 @@ import {Link, Route} from 'react-router-dom'
 export default function DefaultLayout ({component: MatchedPage, ...rest}) {
     return (
         <Route {...rest} render={matchProps => (
-            <div className="DefaultLayout">
+            <div>
 
                 <Link to='/'>
                     Home
