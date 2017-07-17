@@ -1,34 +1,20 @@
 import React from 'react';
+import {connect} from 'react-redux'
+import * as actionCreators from './behaviors'
 
-export default class Counter extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            nb: 0,
-        }
-    }
-
-    increment() {
-        this.setState({
-            nb: this.state.nb + 1
-        })
-    }
-
-    render() {
-        return (
-            <div>
-                <NumberDisplay
-                    numberToDisplay={this.state.nb}
-                    textColor="red"
-                />
-                <button onClick={ ( ) => this.increment() }>
-                    click me
-                </button>
-            </div>
-        )
-    }
+function Counter(props) {
+    return (
+        <div>
+            <NumberDisplay
+                numberToDisplay={props.numberToDisplay}
+                textColor="red"
+            />
+            <button onClick={ ( ) => props.increment() }>
+                click me
+            </button>
+        </div>
+    )
 }
-
 
 function NumberDisplay(props) {
     const style = {
@@ -36,6 +22,17 @@ function NumberDisplay(props) {
         fontSize: '60px'
     }
     return (
-        <h1 style={style}>{ props.numberToDisplay }</h1>
+        <h1 style={style}>{ props.numberToDisplay || 0 }</h1>
     )
 }
+
+
+function mapStateToProps(state) {
+    return {
+        numberToDisplay: state.counter.get('counterValue'),
+
+    }
+}
+
+const Connected = connect(mapStateToProps, actionCreators)(Counter);
+export default Connected
